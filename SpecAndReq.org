@@ -117,6 +117,64 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     prod(𝑣):
     - out: /out/ $:=$ $self.x\cdot v.getX() + self.y\cdot v.getY()$
 
+* Point2D
+** Template Module
+   Point2D
+** Uses
+
+** Syntax
+
+*** Exported Types
+    Point2D
+*** Exported Access Program
+    | Routine name | Input | Output  | Exceptions |
+    |--------------+-------+---------+------------|
+    | Point2D      | ℕ, ℕ  | Point2D |            |
+    | getX         |       | ℕ       |            |
+    | getY         |       | ℕ       |            |
+    | move         | ℕ, ℕ  |         |            |
+    | set          | ℕ, ℕ  |         |            |
+
+*** Semantics
+
+**** State Variables
+
+     𝑥: ℕ
+
+     𝑦: ℕ
+
+**** State Invariant
+
+     None
+
+**** Assumptions
+
+     Point2D gets called before other method calls.
+
+**** Access Routine Semantics
+
+     ~new~ Point2D(𝑥, 𝑦):
+     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
+     - out: /out/ $:=$ /self/
+     - exception: None
+
+
+     getX():
+     - out: /out/ $:=$ 𝑥
+
+
+     getY():
+     - out: /out/ $:=$ 𝑦
+
+
+     move(𝑥, 𝑦):
+     - transition: self.𝑥,  self.𝑦 $:=$ self.𝑥 + 𝑥, self.𝑦 + 𝑦
+
+
+     set(𝑥, 𝑦):
+     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
+
+* settings                                                         :noexport:
 # Local Variables:
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
 # eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
