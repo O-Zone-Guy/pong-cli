@@ -1,0 +1,123 @@
+#+title: Pong(CLI) Requirement and Specification Document
+#+author: Omar Alkersh
+#+options: toc:nil
+#+latex_header: \usepackage[a4paper, margin=1in]{geometry} \usepackage[utf8]{inputenc}
+
+This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][Pong]] game in C++ using the PDCurses library. The purpose of this project is to practice C++, project planning, and writing SRS(Software Requirement and Specification) document.
+
+* Requirements
+  The software produced must be platform agnostic, between *nix and Windows machines. This game will run as a command line application. It shall start with a menu containing the following options: VS Computer, VS Player, and Exit. VS Computer will start the game with one of the pong pedals controlled by a computer. VS Player will start the game with both pedals controlled by user input. Exit will terminate the program.
+
+  The game will follow the general rules of pong as described in the link above with the following specifications:
+
+  - The ball will launch in a random direction.
+    - When the score is 0 - 0 the side to launch to is randomised
+    - Else, the ball will go to the direction of the player that scored the previous goal.
+  - The ball will deflect normally from the upper and lower bounds/walls.
+  - The ball will deflect based on the angle to the centre of the colliding pedal.
+    - The vector to the centre of the pedal from the centre of the ball will serve as the collision normal.
+
+  Navigating the software will be entirely using the keyboard. The menu can be navigated using the arrow keys or using j/k to go up/down. ~return~ will serve to select.
+
+  The game controls are as follows:
+
+  |           | Player 1 (Main Player) | Player 2 |
+  |-----------+------------------------+----------|
+  | Move up   | ~k/up~                 | ~w~      |
+  | Move down | ~j/down~               | ~s~      |
+  | Pause     | ~esc~                  | ~esc~    |
+
+* Vector2D Module
+
+** Template Module
+   Vector2D
+** Syntax
+
+*** Exported Types
+
+    Vector2D = ?
+
+*** Exported Access Program
+
+    | Routine name | Input    | Out      | Exceptions         |
+    |--------------+----------+----------+--------------------|
+    | Vector2D     | ℕ, ℕ     | Vector2D |                    |
+    | getX         |          | ℕ        |                    |
+    | getY         |          | ℕ        |                    |
+    | getMag       |          | ℕ        |                    |
+    | angleBetween | Vector2D | ℝ        | =invalid_argument= |
+    | mulMag       | ℝ        |          |                    |
+    | setMag       | ℝ        |          | =invalid_argument= |
+    | rotate       | ℝ        |          |                    |
+    | add          | Vector2D | Vector2D |                    |
+    | prod         | Vector2D | ℝ        | =invalid_argument= |
+
+
+*** Semantics
+
+**** State Variables
+
+     𝑥: ℕ
+
+     𝑦: ℕ
+
+**** State Invariant
+
+     - =getMag()= ≥ 0
+     - -π < =angleBetween(𝑥)= ≤ π
+
+**** Assumptions
+
+     Vector2D is called before any other function is called.
+**** Access Routine Semantics
+
+     ~new~ Vector2D(𝑥, 𝑦):
+     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
+     - out: /out/ $:=$ /self/
+     - exception: none
+
+
+     getX():
+     - out: /out/ $:=$ /self.x/
+
+
+     getY():
+     - out: /out/ $:=$ /self.y/
+
+     getMag():
+     - out: /out/ $:=$ $\sqrt{𝑥^2 + 𝑦^2}$
+     - exception: none
+
+
+    angleBetween(𝑣):
+    - out: out $:=$ $cos^{-1}(self.prod(v))$
+    - exception: /exc/ $:=$ 𝑣.getMag() ≤ 0 ⇒ =invalid_argument=
+
+
+    mulMag(𝑚):
+    - transition: 𝑥, 𝑦 $:=$ 𝑥·𝑚, 𝑦·𝑚
+    - exception: None
+
+
+    setMag(𝑚):
+    - transition: 𝑥, 𝑦 $:=$ $x\cdot\frac{m}{getMag()}$, $y\cdot\frac{m}{getMag()}$
+    - exception: /exc/ $:=$ 𝑚 < 0 ⇒ =invalid_argument=
+
+
+    rotate(𝑟):
+    - transition: 𝑥, 𝑦 $:=$ 𝑥·cos(𝑟) - 𝑦·sin(𝑟), 𝑥·sin(𝑟) + 𝑦·cos(𝑟)
+    - exception: None
+
+
+    add(𝑣):
+    - out: /out/ $:=$ new Vector2D(self.x + v.getX(), self.y + v.getY())
+    - exception: None
+
+
+    prod(𝑣):
+    - out: /out/ $:=$ $self.x\cdot v.getX() + self.y\cdot v.getY()$
+
+# Local Variables:
+# org-latex-inputenc-alist: (("utf8" . "utf8x"))
+# eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
+# End:
