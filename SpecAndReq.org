@@ -1,6 +1,6 @@
 #+title: Pong(CLI) Requirement and Specification Document
 #+author: Omar Alkersh
-#+options: toc:nil
+#+options: toc:nil num:nil
 #+latex_header: \usepackage[a4paper, margin=1in]{geometry} \usepackage[utf8]{inputenc}
 
 This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][Pong]] game in C++ using the PDCurses library. The purpose of this project is to practice C++, project planning, and writing SRS(Software Requirement and Specification) document.
