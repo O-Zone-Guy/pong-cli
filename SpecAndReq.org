@@ -41,10 +41,10 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
     | Routine name | Input    | Out      | Exceptions         |
     |--------------+----------+----------+--------------------|
-    | Vector2D     | ℕ, ℕ     | Vector2D |                    |
-    | getX         |          | ℕ        |                    |
-    | getY         |          | ℕ        |                    |
-    | getMag       |          | ℝ       |                    |
+    | Vector2D     | ℝ, ℝ     | Vector2D |                    |
+    | getX         |          | ℝ       |                    |
+    | getY         |          | ℝ       |                    |
+    | getMag       |          | ℝ        |                    |
     | angleBetween | Vector2D | ℝ        | =invalid_argument= |
     | mulMag       | ℝ        |          |                    |
     | setMag       | ℝ        |          | =invalid_argument= |
@@ -56,9 +56,9 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 **** State Variables
 
-     𝑥: ℕ
+     𝑥: ℝ
 
-     𝑦: ℕ
+     𝑦: ℝ
 
 **** State Invariant
 
