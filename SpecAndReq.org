@@ -52,7 +52,6 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     | add          | Vector2D | Vector2D |                    |
     | prod         | Vector2D | ℝ        | =invalid_argument= |
 
-
 *** Semantics
 
 **** State Variables
