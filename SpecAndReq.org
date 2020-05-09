@@ -190,51 +190,6 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 
 \newpage
-* AABB
-
-** Template Module
-
-   AABB2D
-
-** Uses
-
-** Syntax
-*** Exported Types
-
-    AAB2D = ?
-
-*** Exported Access Program
-
-    | Routine name | Input            | Output  | Exceptions         |
-    |--------------+------------------+---------+--------------------|
-    | AABB2D       | Point2D, Point2D | AABB2D  | =illegal_argument= |
-    | isColliding  | AABB2D           | 𝔹       |                    |
-    | min          |                  | Point2D |                    |
-    | max          |                  | Point2D |                    |
-    | setMin       | Point2D          |         | =illegal_argument= |
-    | setMax       | Point2D          |         | =illegal_argument= |
-
-*** Semantics
-
-**** State Variables
-
-     /min/: Point2D
-
-     /max/: Point2D
-**** State Invariant
-
-     min.compareTo(max) = -1
-
-**** Assumptions
-
-     ~AABB2D~ is called before any other method.
-**** Access Routine Semantics
-
-     ~new~ AABB2D(/min/, /max/):
-     - transition: $self.min, self.max := min, max$
-     - out: $out := self$
-     - exception: $exc := min.compareTo(max) ≠ -1 ⇒$ =illegal_argument=
-
 * settings                                                         :noexport:
 # Local Variables:
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
