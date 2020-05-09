@@ -72,51 +72,53 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Access Routine Semantics
 
      ~new~ Vector2D(𝑥, 𝑦):
-     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
-     - out: /out/ $:=$ /self/
+     - transition: $self.x, self.y := x, y
+     - out: $out := self$
      - exception: none
 
 
      getX():
-     - out: /out/ $:=$ /self.x/
+     - out: $out := self.x$
 
 
      getY():
-     - out: /out/ $:=$ /self.y/
+     - out: $out := self.y$
 
      getMag():
-     - out: /out/ $:=$ $\sqrt{𝑥^2 + 𝑦^2}$
+     - out: $out := \sqrt{x^2 + x^2}$
      - exception: none
 
 
     angleBetween(𝑣):
-    - out: out $:=$ $cos^{-1}(self.prod(v))$
-    - exception: /exc/ $:=$ 𝑣.getMag() ≤ 0 ⇒ =invalid_argument=
+    - out: $out := cos^{-1}(self.prod(v))$
+    - exception: $exc := v.getMag() ≤ 0 ⇒$ =invalid_argument=
 
 
     mulMag(𝑚):
-    - transition: 𝑥, 𝑦 $:=$ 𝑥·𝑚, 𝑦·𝑚
+    - transition: $x, y := x\cdot m, y\cdot m$
     - exception: None
 
 
     setMag(𝑚):
-    - transition: 𝑥, 𝑦 $:=$ $x\cdot\frac{m}{getMag()}$, $y\cdot\frac{m}{getMag()}$
-    - exception: /exc/ $:=$ 𝑚 < 0 ⇒ =invalid_argument=
+    - transition: $𝑥, 𝑦 := x\cdot \frac{m}{getMag()}$, $y\cdot \frac{m}{getMag()}$
+    - exception: $exc := 𝑚 < 0 ⇒$ =invalid_argument=
 
 
     rotate(𝑟):
-    - transition: 𝑥, 𝑦 $:=$ 𝑥·cos(𝑟) - 𝑦·sin(𝑟), 𝑥·sin(𝑟) + 𝑦·cos(𝑟)
+    - transition: $𝑥, 𝑦 := 𝑥·cos(𝑟) - 𝑦·sin(𝑟), 𝑥·sin(𝑟) + 𝑦·cos(𝑟)$
     - exception: None
 
 
     add(𝑣):
-    - out: /out/ $:=$ new Vector2D(self.x + v.getX(), self.y + v.getY())
+    - out: $out := new Vector2D(self.x + v.getX(), self.y + v.getY())$
     - exception: None
 
 
     prod(𝑣):
-    - out: /out/ $:=$ $self.x\cdot v.getX() + self.y\cdot v.getY()$
+    - out: $out := self.x\cdot v.getX() + self.y\cdot v.getY()$
 
+
+\newpage
 * Point2D
 ** Template Module
    Point2D
@@ -127,13 +129,14 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 *** Exported Types
     Point2D
 *** Exported Access Program
-    | Routine name | Input | Output  | Exceptions |
-    |--------------+-------+---------+------------|
-    | Point2D      | ℕ, ℕ  | Point2D |            |
-    | getX         |       | ℕ       |            |
-    | getY         |       | ℕ       |            |
-    | move         | ℕ, ℕ  |         |            |
-    | set          | ℕ, ℕ  |         |            |
+    | Routine name | Input   | Output  | Exceptions |
+    |--------------+---------+---------+------------|
+    | Point2D      | ℕ, ℕ    | Point2D |            |
+    | getX         |         | ℕ       |            |
+    | getY         |         | ℕ       |            |
+    | move         | ℕ, ℕ    |         |            |
+    | set          | ℕ, ℕ    |         |            |
+    | compareTo    | Point2D | ℕ       |            |
 
 *** Semantics
 
@@ -154,25 +157,83 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Access Routine Semantics
 
      ~new~ Point2D(𝑥, 𝑦):
-     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
-     - out: /out/ $:=$ /self/
+     - transition: $self.y, self.y := x, y$
+     - out: $out := self$
      - exception: None
 
 
      getX():
-     - out: /out/ $:=$ 𝑥
+     - out: $out := 𝑥$
 
 
      getY():
-     - out: /out/ $:=$ 𝑦
+     - out: $out := 𝑦$
 
 
      move(𝑥, 𝑦):
-     - transition: self.𝑥,  self.𝑦 $:=$ self.𝑥 + 𝑥, self.𝑦 + 𝑦
+     - transition: $self.x,  self.y := self.x + x, self.y + y$
 
 
      set(𝑥, 𝑦):
-     - transition: self.𝑥, self.𝑦 $:=$ 𝑥, 𝑦
+     - transition: $self.x, self.y := x, y$
+
+
+     compareTo(𝑝):
+     - out: $out :=$
+       #+begin_export latex
+       \begin{align*}
+         (⟨ self.getX(), self.getY() ⟩ <_{lex }⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ -1 |\\
+         (⟨ self.getX(), self.getY() ⟩ >_{lex }⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ 1 |\\
+         True &⇒ 0
+       \end{align*}
+       #+end_export
+
+
+\newpage
+* AABB
+
+** Template Module
+
+   AABB2D
+
+** Uses
+
+** Syntax
+*** Exported Types
+
+    AAB2D = ?
+
+*** Exported Access Program
+
+    | Routine name | Input            | Output  | Exceptions         |
+    |--------------+------------------+---------+--------------------|
+    | AABB2D       | Point2D, Point2D | AABB2D  | =illegal_argument= |
+    | isColliding  | AABB2D           | 𝔹       |                    |
+    | min          |                  | Point2D |                    |
+    | max          |                  | Point2D |                    |
+    | setMin       | Point2D          |         | =illegal_argument= |
+    | setMax       | Point2D          |         | =illegal_argument= |
+
+*** Semantics
+
+**** State Variables
+
+     /min/: Point2D
+
+     /max/: Point2D
+**** State Invariant
+
+     min.compareTo(max) = -1
+
+**** Assumptions
+
+     ~AABB2D~ is called before any other method.
+**** Access Routine Semantics
+
+     ~new~ AABB2D(/min/, /max/):
+     - transition: $self.min, self.max := min, max$
+     - out: $out := self$
+     - exception: $exc := min.compareTo(max) ≠ -1 ⇒$ =illegal_argument=
 
 * settings                                                         :noexport:
 # Local Variables:
