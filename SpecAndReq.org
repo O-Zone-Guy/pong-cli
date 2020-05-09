@@ -44,7 +44,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     | Vector2D     | ℕ, ℕ     | Vector2D |                    |
     | getX         |          | ℕ        |                    |
     | getY         |          | ℕ        |                    |
-    | getMag       |          | ℕ        |                    |
+    | getMag       |          | ℝ       |                    |
     | angleBetween | Vector2D | ℝ        | =invalid_argument= |
     | mulMag       | ℝ        |          |                    |
     | setMag       | ℝ        |          | =invalid_argument= |
