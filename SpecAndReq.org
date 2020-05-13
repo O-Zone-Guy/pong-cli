@@ -181,8 +181,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      - out: $out :=$
        #+begin_export latex
        \begin{align*}
-         (⟨ self.getX(), self.getY() ⟩ <_{lex }⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ -1 |\\
-         (⟨ self.getX(), self.getY() ⟩ >_{lex }⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ 1 |\\
+         (⟨ self.getX(), self.getY() ⟩ <_{lex}⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ -1 |\\
+         (⟨ self.getX(), self.getY() ⟩ >_{lex}⟨𝑝.getX(), 𝑝.getY() ⟩) &⇒ 1 |\\
          True &⇒ 0
        \end{align*}
        #+end_export
