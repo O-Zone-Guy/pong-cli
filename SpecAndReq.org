@@ -189,6 +189,25 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 
 \newpage
+
+* Collider2D
+
+** Abstract Template Module
+
+   Collider2D
+** Uses
+
+** Syntax
+*** Exported Types
+
+    Collision2D = ?
+*** Exported Access Program
+
+    | Routine name | Input              | Output | Exceptions |
+    |--------------+--------------------+--------+------------|
+    | onCollide    | seq( Collision2D ) |        |            |
+    | isColliding  | Collision2D        | 𝔹      |            |
+
 * settings                                                         :noexport:
 # Local Variables:
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
