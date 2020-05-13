@@ -205,8 +205,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
     | Routine name | Input              | Output | Exceptions |
     |--------------+--------------------+--------+------------|
-    | onCollide    | seq( Collision2D ) |        |            |
-    | isColliding  | Collision2D        | 𝔹      |            |
+    | collideEvent | seq( Collider2D ) |        |            |
+    | isColliding  | Collider2D  | 𝔹      |            |
 
 * settings                                                         :noexport:
 # Local Variables:
