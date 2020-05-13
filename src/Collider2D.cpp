@@ -1,5 +1,5 @@
-#include "Collider2D.h"
-#include "Point2D.h"
+#include "headers/Collider2D.h"
+#include "headers/Point2D.h"
 #include <stdexcept>
 
 Collider2D::Collider2D (Point2D p1, Point2D p2): min{p1}, max{p2} {
