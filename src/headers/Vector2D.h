@@ -6,19 +6,19 @@ class Vector2D {
 
 public:
   Vector2D(int x, int y);
-  double getX();
-  double getY();
-  double getMag();
-  double angleBetween(Vector2D* v);
+  double getX() const;
+  double getY() const;
+  double getMag() const;
+  double angleBetween(const Vector2D& v);
   void   mulMag(double mag);
   void   setMag(double mag);
   void   rotate(double r);
 
   // operator
-  bool operator==(Vector2D other);
-  Vector2D operator+(Vector2D v);
-  Vector2D operator-();
-  double operator*(Vector2D v);
+  bool operator==(const Vector2D other) const;
+  Vector2D operator+(const Vector2D v) const;
+  Vector2D operator-() const;
+  double operator*(const Vector2D v) const;
 };
 
 #endif

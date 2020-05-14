@@ -3,11 +3,11 @@
 
 Vector2D::Vector2D(int x, int y): x{x}, y{y} {};
 
-double Vector2D::getX() { return x;};
+double Vector2D::getX() const { return x;};
 
-double Vector2D::getY() { return y;};
+double Vector2D::getY() const { return y;};
 
-double Vector2D::getMag() {
+double Vector2D::getMag() const {
   return sqrt(pow(x, 2) + pow(y, 2));
 }
 
@@ -26,19 +26,19 @@ void Vector2D::rotate(double r) {
   y = x * sin(r) + y * cos(r);
 }
 
-Vector2D Vector2D::operator+(Vector2D v){
+Vector2D Vector2D::operator+(const Vector2D v) const {
   return Vector2D(this->getX() + v.getX(),
                   this->getY() + v.getY());
 }
 
-Vector2D Vector2D::operator-() {
+Vector2D Vector2D::operator-() const {
   return Vector2D{(int)-this->getX(), (int)-this->getY()};
 };
 
-double Vector2D::operator*(Vector2D v) {
+double Vector2D::operator*(const Vector2D v) const {
   return this->getX() * v.getX() + this->getY() * v.getY();
 }
 
-bool Vector2D::operator==(Vector2D other) {
+bool Vector2D::operator==(const Vector2D other) const {
   return this->getX() == other.getX() && this->getY() == other.getY();
 }
