@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/headers/Point2D.h"
+#include "Point2D.h"
 
 class TestPoint2D : public ::testing::Test {
 protected:
