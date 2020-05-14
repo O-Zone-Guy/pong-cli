@@ -9,16 +9,16 @@ public:
   double getX() const;
   double getY() const;
   double getMag() const;
-  double angleBetween(const Vector2D& v);
-  void   mulMag(double mag);
-  void   setMag(double mag);
-  void   rotate(double r);
+  double angleBetween(const Vector2D&) const;
+  void   mulMag(double);
+  void   setMag(double);
+  void   rotate(double);
 
   // operator
-  bool operator==(const Vector2D other) const;
-  Vector2D operator+(const Vector2D v) const;
+  bool operator==(const Vector2D&) const;
+  Vector2D operator+(const Vector2D&) const;
   Vector2D operator-() const;
-  double operator*(const Vector2D v) const;
+  double operator*(const Vector2D&) const;
 };
 
 #endif
