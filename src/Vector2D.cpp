@@ -36,6 +36,10 @@ Vector2D Vector2D::operator+(Vector2D v){
                   this->getY() + v.getY());
 }
 
+Vector2D Vector2D::operator-() {
+  return Vector2D{(int)-this->getX(), (int)-this->getY()};
+};
+
 bool Vector2D::operator==(Vector2D other) {
   return this->getX() == other.getX() && this->getY() == other.getY();
 }

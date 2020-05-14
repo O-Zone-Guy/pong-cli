@@ -18,6 +18,7 @@ public:
   // operator
   bool operator==(Vector2D other);
   Vector2D operator+(Vector2D v);
+  Vector2D operator-();
 };
 
 #endif
