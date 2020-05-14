@@ -13,12 +13,12 @@ public:
   void   mulMag(double mag);
   void   setMag(double mag);
   void   rotate(double r);
-  double prod(Vector2D* v);
 
   // operator
   bool operator==(Vector2D other);
   Vector2D operator+(Vector2D v);
   Vector2D operator-();
+  double operator*(Vector2D v);
 };
 
 #endif
