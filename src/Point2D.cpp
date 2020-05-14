@@ -17,14 +17,14 @@ void Point2D::moveTo(int x, int y) {
 }
 
 int Point2D::compareTo(Point2D* p) {
-  if (p->getX() == this->getX())
-    if (p->getY() == this->getY())
+  if (this->getX() == p->getX())
+    if (this->getY() == p->getY())
       return 0;
-    else if (p->getY() < this->getY())
+    else if (this->getY() < p->getY())
       return -1;
     else
       return 1;
-  else if (p->getX() < this->getX())
+  else if (this->getX() < p->getX())
     return -1;
   return 1;
 }
