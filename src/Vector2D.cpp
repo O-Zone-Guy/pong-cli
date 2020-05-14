@@ -26,11 +26,16 @@ void Vector2D::rotate(double r) {
   y = x * sin(r) + y * cos(r);
 }
 
-Vector2D* Vector2D::add(Vector2D* v){
-  return new Vector2D(this->getX() + v->getX(),
-                      this->getY() + v->getY());
-}
 
 double Vector2D::prod(Vector2D* v){
   return this->getX() * v->getX() + this->getY() * v->getY();
+}
+
+Vector2D Vector2D::operator+(Vector2D v){
+  return Vector2D(this->getX() + v.getX(),
+                  this->getY() + v.getY());
+}
+
+bool Vector2D::operator==(Vector2D other) {
+  return this->getX() == other.getX() && this->getY() == other.getY();
 }
