@@ -1,3 +1,4 @@
 *.tex
 auto/**
 *.o
+build/**
