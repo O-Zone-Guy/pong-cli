@@ -9,10 +9,10 @@ public:
   double getX() const;
   double getY() const;
   double getMag() const;
-  double angleBetween(const Vector2D&) const;
   void   mulMag(double);
   void   setMag(double);
   void   rotate(double);
+  double angleBetween(const Vector2D&) const;
 
   // operator
   bool operator==(const Vector2D&) const;
