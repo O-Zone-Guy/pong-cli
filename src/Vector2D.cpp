@@ -37,19 +37,19 @@ void Vector2D::setMag(double mag) { this->mag = mag; };
 void Vector2D::addMag(double dMag) { this->mag += dMag;};
 
 void Vector2D::addX(double dx) {
-  double x = mag * cos(rad) + dx;
-  double y = mag * sin(rad);
+  double x = this->getX() + dx;
+  double y = this->getY();
 
   this->mag = sqrt(x*x + y*y);
-  this->rad = atan2(x, y);
+  this->rad = atan2(y, x);
 }
 
 void Vector2D::addY(double dy) {
-  double x = mag * cos(rad);
-  double y = mag * sin(rad) + dy;
+  double x = this->getX();
+  double y = this->getY() + dy;
 
   this->mag = sqrt(x*x + y*y);
-  this->rad = atan2(x, y);
+  this->rad = atan2(y, x);
 }
 
 void Vector2D::rotate(double rad) { this->rad += rad; };
