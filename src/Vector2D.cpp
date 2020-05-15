@@ -17,8 +17,8 @@ void Vector2D::mulMag(double mag) {
 }
 
 void Vector2D::setMag(double mag) {
-  x *= (this->getMag() / mag);
-  y *= (this->getMag() / mag);
+  x *= (mag / this->getMag());
+  y *= (mag / this->getMag());
 }
 
 void Vector2D::rotate(double r) {
