@@ -34,6 +34,24 @@ void Vector2D::mulMag(double mag) { this->mag*= mag; };
 
 void Vector2D::setMag(double mag) { this->mag = mag; };
 
+void Vector2D::addMag(double dMag) { this->mag += dMag;};
+
+void Vector2D::addX(double dx) {
+  double x = mag * cos(rad) + dx;
+  double y = mag * sin(rad);
+
+  this->mag = sqrt(x*x + y*y);
+  this->rad = atan2(x, y);
+}
+
+void Vector2D::addY(double dy) {
+  double x = mag * cos(rad);
+  double y = mag * sin(rad) + dy;
+
+  this->mag = sqrt(x*x + y*y);
+  this->rad = atan2(x, y);
+}
+
 void Vector2D::rotate(double rad) { this->rad += rad; };
 
 double Vector2D::angleBetween(const Vector2D& v) const {

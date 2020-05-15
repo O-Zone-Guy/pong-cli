@@ -10,9 +10,12 @@ public:
   double getX() const;
   double getY() const;
   double getMag() const;
-  void   mulMag(double);
-  void   setMag(double);
-  void   rotate(double);
+  void mulMag(double);
+  void setMag(double);
+  void addMag(double);
+  void addX(double);
+  void addY(double);
+  void rotate(double);
   double angleBetween(const Vector2D&) const;
 
   // operator
