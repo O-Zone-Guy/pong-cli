@@ -41,39 +41,51 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
     | Routine name | Input    | Out      | Exceptions         |
     |--------------+----------+----------+--------------------|
+    | Vector2D     | ℕ, ℕ     | Vector2D |                    |
     | Vector2D     | ℝ, ℝ     | Vector2D |                    |
-    | getX         |          | ℝ       |                    |
-    | getY         |          | ℝ       |                    |
+    | getX         |          | ℝ        |                    |
+    | getY         |          | ℝ        |                    |
     | getMag       |          | ℝ        |                    |
-    | angleBetween | Vector2D | ℝ        | =invalid_argument= |
     | mulMag       | ℝ        |          |                    |
     | setMag       | ℝ        |          | =invalid_argument= |
+    | addMag       | ℝ        |          |                    |
+    | addX         | ℝ        |          |                    |
+    | addY         | ℝ        |          |                    |
     | rotate       | ℝ        |          |                    |
-    | add          | Vector2D | Vector2D |                    |
-    | prod         | Vector2D | ℝ        | =invalid_argument= |
+    | angleBetween | Vector2D | ℝ        | =invalid_argument= |
+    | (==)         | Vector2D | 𝔹        |                    |
+    | -()          |          | Vector2D |                    |
+    | (+)          | Vector2D | Vector2D |                    |
+    | (*)          | Vector2D | ℝ        | =invalid_argument= |
 
 *** Semantics
 
 **** State Variables
 
-     𝑥: ℝ
+     rad: ℝ
 
-     𝑦: ℝ
+     mag: ℝ
 
 **** State Invariant
 
-     - =getMag()= ≥ 0
-     - -π < =angleBetween(𝑥)= ≤ π
+     - mag ≥ 0
+     - -π < rad ≤ π
 
 **** Assumptions
 
      Vector2D is called before any other function is called.
 **** Access Routine Semantics
 
-     ~new~ Vector2D(𝑥, 𝑦):
-     - transition: $self.x, self.y := x, y
+     ~new~ Vector2D(𝑥: ℕ, 𝑦: ℕ):
+     - transition: $self.mag, self.rad := \sqrt{x^2 + y^2}, atan2(x, y)$
      - out: $out := self$
-     - exception: none
+     - exception: None
+
+
+     ~new~ Vector2D(rad: ℝ, mag: ℝ):
+     - transition: $self.mag, self.rad := mag, rad$
+     - out: $out := self$
+     - exception: None
 
 
      getX():
@@ -87,12 +99,6 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      - out: $out := \sqrt{x^2 + x^2}$
      - exception: none
 
-
-    angleBetween(𝑣):
-    - out: $out := cos^{-1}(self.prod(v))$
-    - exception: $exc := v.getMag() ≤ 0 ⇒$ =invalid_argument=
-
-
     mulMag(𝑚):
     - transition: $x, y := x\cdot m, y\cdot m$
     - exception: None
@@ -103,18 +109,38 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     - exception: $exc := 𝑚 < 0 ⇒$ =invalid_argument=
 
 
+    addMag(𝑚):
+    - transition: $self.mag := mag$
+    - exception: None
+
+
+    addX(𝑥_𝑑):
+    - transition: $mag, rad := sqrt{mag^2 + x_d^2 + 2getX()\cdot x_d}, atan2(getX() + x_d, getY())$
+    - exception: None
+
+
+    addY(𝑦_𝑑):
+    - transition: $mag, rad := sqrt{mag^2 + y_d^2 + 2getY()\cdot y_d}, atan2(getX(), getY() + y_d)$
+    - exception: None
+
     rotate(𝑟):
     - transition: $𝑥, 𝑦 := 𝑥·cos(𝑟) - 𝑦·sin(𝑟), 𝑥·sin(𝑟) + 𝑦·cos(𝑟)$
     - exception: None
 
 
-    add(𝑣):
+    angleBetween(𝑣):
+    - out: $out := cos^{-1}(self.prod(v))$
+    - exception: $exc := v.getMag() ≤ 0 ⇒$ =invalid_argument=
+
+
+    this + 𝑣:
     - out: $out := new Vector2D(self.x + v.getX(), self.y + v.getY())$
     - exception: None
 
 
-    prod(𝑣):
+    this * 𝑣:
     - out: $out := self.x\cdot v.getX() + self.y\cdot v.getY()$
+    - exception: None
 
 
 \newpage
