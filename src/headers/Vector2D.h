@@ -2,10 +2,11 @@
 #define VECTOR2D
 
 class Vector2D {
-  int x, y;
+  double  rad, mag; // rad: radians degrees, mag: magnitude
 
 public:
-  Vector2D(int x, int y);
+  Vector2D(int, int);
+  Vector2D(double, double);
   double getX() const;
   double getY() const;
   double getMag() const;

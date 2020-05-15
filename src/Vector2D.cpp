@@ -1,34 +1,43 @@
 #include "headers/Vector2D.h"
 #include "math.h"
+#include <stdexcept>
+#include <cmath>
 
-Vector2D::Vector2D(int x, int y): x{x}, y{y} {};
-
-double Vector2D::getX() const { return x;};
-
-double Vector2D::getY() const { return y;};
-
-double Vector2D::getMag() const {
-  return sqrt(pow(x, 2) + pow(y, 2));
+Vector2D::Vector2D(int x, int y) {
+  mag = sqrt(x*x + y*y);
+  rad = atan2(y, x);
 }
 
-void Vector2D::mulMag(double mag) {
-  x *= mag;
-  y *= mag;
+Vector2D::Vector2D(double rad, double mag) {
+  rad = std::fmod(rad, 2*M_PI);
+  this->rad = rad > M_PI ? - (rad - M_PI) : rad;
+
+  if (mag < 0){
+    mag = - mag;
+    this->rad = - this->rad;
+  }
+
+  this->mag = mag;
 }
 
-void Vector2D::setMag(double mag) {
-  x *= (mag / this->getMag());
-  y *= (mag / this->getMag());
+double Vector2D::getX() const {
+  return mag * cos(rad);
 }
 
-void Vector2D::rotate(double r) {
-  x = x * cos(r) - y * sin(r);
-  y = x * sin(r) + y * cos(r);
+double Vector2D::getY() const {
+  return mag * sin(rad);
 }
+
+double Vector2D::getMag() const { return mag;}
+
+void Vector2D::mulMag(double mag) { this->mag*= mag; };
+
+void Vector2D::setMag(double mag) { this->mag = mag; };
+
+void Vector2D::rotate(double rad) { this->rad += rad; };
 
 double Vector2D::angleBetween(const Vector2D& v) const {
-  return acos(  ((*this) * v)
-              / (this->getMag() * v.getMag()));
+  return v.rad - this->rad;
 }
 
 Vector2D Vector2D::operator+(const Vector2D& v) const {
@@ -37,7 +46,7 @@ Vector2D Vector2D::operator+(const Vector2D& v) const {
 }
 
 Vector2D Vector2D::operator-() const {
-  return Vector2D{(int)-this->getX(), (int)-this->getY()};
+  return Vector2D{this->mag, -this->rad};
 };
 
 double Vector2D::operator*(const Vector2D& v) const {
@@ -45,5 +54,5 @@ double Vector2D::operator*(const Vector2D& v) const {
 }
 
 bool Vector2D::operator==(const Vector2D& other) const {
-  return this->getX() == other.getX() && this->getY() == other.getY();
+  return this->mag == other.mag && this->rad == other.rad;
 }
