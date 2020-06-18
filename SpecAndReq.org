@@ -216,43 +216,6 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 \newpage
 
-* Collider2D
-
-** Abstract Template Module
-
-   Collider2D
-** Uses
-
-** Syntax
-*** Exported Types
-
-    Collision2D = ?
-*** Exported Access Program
-
-    | Routine name | Input             | Output     | Exceptions         |
-    |--------------+-------------------+------------+--------------------|
-    | Collider2D   | Point2D, Point2D  | Collider2D | =illegal_argument= |
-    | collideEvent | seq( Collider2D ) |            |                    |
-    | isColliding  | Collider2D        | 𝔹          |                    |
-*** Semantics
-**** State Variables
-
-     min: Point2D
-
-     max: Point2D
-**** State Invariant
-
-     $min.compareTo(max) ≠ 1$
-**** Assumptions
-
-     This module Collider2D is called before any other method.
-**** Access Routine Semantics
-
-     ~new~ Collider2D(𝑝_1, 𝑝_2):
-     - transition: $min, max := p_1, p_2$
-     - out: $out := self$
-     - exception: $exc := p_{1}.compareTo(p_2) = 1 ⇒$ =illegal_argument=
-
 * settings                                                         :noexport:
 # Local Variables:
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
