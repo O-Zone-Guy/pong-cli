@@ -306,27 +306,68 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 ** Syntax
 
 *** Exported Constants
-
+    
 *** Exported Types
     
     Ball
 
 *** Exported Access Program
 
-    | Routine name | Input | Output | Exceptions |
-    |--------------+-------+--------+------------|
-    |              |       |        |            |
-
+    | Routine name | Input                           | Output | Exceptions     |
+    |--------------+---------------------------------+--------+----------------|
+    | Ball         | Point2D, Vector2D, ℕ, ℕ, WINDOW | Ball   | =out_of_range= |
+    | move         | ℝ                               |        |                |
+    | isAtGoal     |                                 | 𝔹      |                |
+    | bounce       | Vector2D                        |        |                |
+    | reset        | Point2D, Velocity               |        | =out_of_range= |
 
 *** Semantics
-
 **** State Variables
+     
+     pos: Point2D
+     
+     velocity: Vector2D
+
+     leftBound: ℕ
+
+     rightBound: ℕ
+     
+     window: WINDOW
 
 **** State Invariant
+     
+     *Need a more formal spec.*
+     
+     The paddle never goes out of the window. For a more formal spec I need the size of the window and the length of the paddle. Probably will figure it mid development.
 
 **** Assumptions
 
 **** Access Routine Semantics
+     
+     ~new~ Ball(p, v, lb, rb, win):
+     - transition: $pos, velocity, leftBound, rightBound, window := p, v, lb, rb, win$
+     - Out: $out := self$
+     - Exception: $exc :=$ =out_of_range= if the spawn position is out of the window bounds.
+     
+
+     move(timeD)
+     - transition: $pos.move(velocity.getX() \cdot timeD, velocity.getX() \cdot timeD)$, will also call ~bounce~ when necessary.
+     - Exception: None
+     
+       
+     isAtGoal():
+     - Out: $out := pos.getX() < leftBound ∨ pos.getX() > rightBound$
+     - Exception: None
+     
+
+     bounce(n):
+     - transition: $velocity = velocity - 2 (velocity \cdot n) n$
+     - Exception: None
+     
+
+     reset(p, v):
+     - transition: $pos, velocity := p, v$
+     - Exception: $exc :=$ =out_of_range= if the spawn position is out of the window bounds.
 
 * Footnotes
 
