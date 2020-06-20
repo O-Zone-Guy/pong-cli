@@ -216,6 +216,122 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 \newpage
 
+* Paddle
+** Template Module
+   Paddle
+** Uses
+   Point2D
+** Syntax
+*** Exported Constants
+    
+    SPEED: ℕ = ?
+    
+*** Exported Types
+    
+    Paddle : ?
+    
+    Direction = {Up, Down, None}
+
+*** Exported Access Program
+
+    | Routine name | Input           | Output  | Exceptions     |
+    |--------------+-----------------+---------+----------------|
+    | Paddle[fn:1] | Point2D, WINDOW | Paddle  | =out_of_range= |
+    | move         | Direction       |         |                |
+    | move         |                 |         |                |
+    | moveTo       | Point2D         |         | =out_of_range= |
+    | getPos       |                 | Point2D |                |
+
+*** Semantics
+**** State Variables
+     
+     pos: Point2D
+
+     window: WINDOW
+     
+     direction: Direction
+
+**** State Invariant
+     
+     *Need a more formal spec.*
+     
+     The paddle never goes out of the window. For a more formal spec I need the size of the window and the length of the paddle. Probably will figure it mid development.
+
+**** Assumptions
+**** Access Routine Semantics
+     
+     ~new~ Paddle(p, w):
+     - transition: $pos, window := p, w$
+     - Out: $out := self$
+     - Exception: $exc := $ =out_of_range=
+       
+
+     move(d):
+     - transition: $direction := d$
+     - Exception: None
+    
+
+     move():
+     - transition:
+       #+begin_export latex
+       \begin{align*}
+         direction = Up &⇒ & pos.move(0, -SPEED) &|\\
+         direction = Down &⇒ & pos.move(0, SPEED) &|\\
+         direction = None &⇒ & pos.move(0, 0) &|\\
+       \end{align*}
+       #+end_export
+     - Note: Need to check for boundaries before moving.
+     - Exception: None
+     
+       
+     moveTo(p):
+     - transition: $pos := p$
+     - Exception: $exc := $ Check boundaries.
+     
+
+     getPos():
+     - Out: $out := pos$
+     - Exception: None
+
+* Ball
+
+** Module
+   
+   Ball
+
+** Uses
+   
+   Vector2D, Point2D
+
+** Syntax
+
+*** Exported Constants
+
+*** Exported Types
+    
+    Ball
+
+*** Exported Access Program
+
+    | Routine name | Input | Output | Exceptions |
+    |--------------+-------+--------+------------|
+    |              |       |        |            |
+
+
+*** Semantics
+
+**** State Variables
+
+**** State Invariant
+
+**** Assumptions
+
+**** Access Routine Semantics
+
+* Footnotes
+
+[fn:1] Maybe add another parameter to define the side. Or just let the controller put it in the correct side.
+
 * settings                                                         :noexport:
 # Local Variables:
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
