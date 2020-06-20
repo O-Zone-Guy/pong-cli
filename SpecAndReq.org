@@ -238,7 +238,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     |--------------+-----------------+---------+----------------|
     | Paddle[fn:1] | Point2D, WINDOW | Paddle  | =out_of_range= |
     | move         | Direction       |         |                |
-    | move         |                 |         |                |
+    | move         | ℝ               |         |                |
     | moveTo       | Point2D         |         | =out_of_range= |
     | getPos       |                 | Point2D |                |
 
@@ -271,13 +271,13 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      - Exception: None
     
 
-     move():
+     move(timeD):
      - transition:
        #+begin_export latex
        \begin{align*}
-         direction = Up &⇒ & pos.move(0, -SPEED) &|\\
-         direction = Down &⇒ & pos.move(0, SPEED) &|\\
-         direction = None &⇒ & pos.move(0, 0) &|\\
+         direction = Up   &⇒ & pos.move(0, timeD \cdot -SPEED) &|\\
+         direction = Down &⇒ & pos.move(0, timeD \cdot SPEED)  &|\\
+         direction = None &⇒ & None                        &|\\
        \end{align*}
        #+end_export
      - Note: Need to check for boundaries before moving.
