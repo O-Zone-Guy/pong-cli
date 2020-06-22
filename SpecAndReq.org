@@ -233,13 +233,13 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 *** Exported Access Program
 
-    | Routine name | Input           | Output  | Exceptions     |
-    |--------------+-----------------+---------+----------------|
-    | Paddle[fn:1] | Point2D, WINDOW | Paddle  | =out_of_range= |
-    | move         | Direction       |         |                |
-    | move         | ℝ               |         |                |
-    | moveTo       | Point2D         |         | =out_of_range= |
-    | getPos       |                 | Point2D |                |
+    | Routine name | Input              | Output  | Exceptions     |
+    |--------------+--------------------+---------+----------------|
+    | Paddle[fn:1] | Point2D, WINDOW, ℕ | Paddle  | =out_of_range= |
+    | move         | Direction          |         |                |
+    | move         | ℝ                  |         |                |
+    | moveTo       | Point2D            |         | =out_of_range= |
+    | getPos       |                    | Point2D |                |
 
 *** Semantics
 **** State Variables
@@ -249,6 +249,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      window: WINDOW
      
      direction: Direction
+     
+     length: ℕ
 
 **** State Invariant
      
@@ -259,8 +261,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Assumptions
 **** Access Routine Semantics
      
-     ~new~ Paddle(p, w):
-     - transition: $pos, window := p, w$
+     ~new~ Paddle(p, w, l):
+     - transition: $pos, window, length := p, w, l$
      - Out: $out := self$
      - Exception: $exc := $ =out_of_range=
        
