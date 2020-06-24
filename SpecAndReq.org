@@ -219,7 +219,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 ** Template Module
    Paddle
 ** Uses
-   Point2D
+   Point2D, PDCurses
 ** Syntax
 *** Exported Constants
     
