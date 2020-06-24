@@ -240,6 +240,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     | move         | ℝ                  |         |                |
     | moveTo       | Point2D            |         | =out_of_range= |
     | getPos       |                    | Point2D |                |
+    | getTop       |                    | Point2D |                |
+    | getBot       |                    | Point2D |                |
 
 *** Semantics
 **** State Variables
@@ -292,6 +294,16 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
      getPos():
      - Out: $out := pos$
+     - Exception: None
+     
+       
+     getTop():
+     - Out: $out := new Point2D(getPos().getX(), getPos().getY()) + ⌈len/2⌉$
+     - Exception: None
+     
+
+     getBot():
+     - Out: $out := new Point2D(getPos().getX(), getPos().getY()) - ⌈len/2⌉$
      - Exception: None
 
 * Ball
