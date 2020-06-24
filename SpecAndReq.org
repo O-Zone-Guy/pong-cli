@@ -295,7 +295,6 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      - Exception: None
 
 * Ball
-
 ** Module
    
    Ball
