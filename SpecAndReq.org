@@ -416,3 +416,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 # org-latex-inputenc-alist: (("utf8" . "utf8x"))
 # eval: (setq org-latex-default-packages-alist (cons '("mathletters" "ucs" nil) org-latex-default-packages-alist))
 # End:
+
+#  LocalWords:  Drawable moveTo getPos getTop getBot pos exc timeD len isAtGoal
+#  LocalWords:  leftBound rightBound rb getMag mulMag setMag addMag addX
+#  LocalWords:  angleBetween
