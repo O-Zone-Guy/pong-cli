@@ -229,7 +229,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 * Paddle
 ** Template Module
-   Paddle
+   Paddle implements Drawable
 ** Uses
    Point2D, PDCurses
 ** Syntax
