@@ -3,12 +3,13 @@
 
 #include "Point2D.h"
 #include <curses.h>
+#include "Drawable.h"
 
 const double SPEED = 10;
 
 enum Direction { Up, Down };
 
-class Paddle {
+class Paddle : Drawable {
   int len;
   Point2D pos;
   WINDOW win;
