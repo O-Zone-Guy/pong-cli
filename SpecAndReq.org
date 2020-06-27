@@ -215,6 +215,18 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 \newpage
 
+* Drawable
+
+** Interface
+   Drawable
+
+** Syntax 
+
+*** Exported Access Program 
+    | Routine Name | Input  | Output | Exception      |
+    |--------------+--------+--------+----------------|
+    | draw         | WINODW |        | =out_of_range= |
+
 * Paddle
 ** Template Module
    Paddle
