@@ -334,7 +334,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 * Ball
 ** Module
    
-   Ball
+   Ball implements Drawable
 
 ** Uses
    
