@@ -216,17 +216,25 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 \newpage
 
 * Drawable
-
+  
 ** Interface
+   
    Drawable
 
+** Uses
+   
+   PDCurses
+
 ** Syntax 
-
 *** Exported Access Program 
-    | Routine Name | Input  | Output | Exception      |
-    |--------------+--------+--------+----------------|
-    | draw         | WINODW |        | =out_of_range= |
+    | Routine Name | Input | Output | Exception      |
+    |--------------+-------+--------+----------------|
+    | draw         |       |        | =out_of_range= |
 
+*** Semantics 
+
+**** State Variables
+     win : WINDOW
 * Paddle
 ** Template Module
    Paddle implements Drawable
