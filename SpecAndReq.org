@@ -325,6 +325,11 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      getBot():
      - Out: $out := new Point2D(getPos().getX(), getPos().getY()) - ⌈len/2⌉$
      - Exception: None
+       
+
+     draw():
+     - Out: Draw a rectangle with 1 character width and length(on the 𝑦-axis) of /len/ with the centre on /pos/.
+     - Exception: If any characters are going to be drawn outside the window, throw =out_of_range=
 
 * Ball
 ** Module
