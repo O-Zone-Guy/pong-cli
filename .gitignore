@@ -2,3 +2,5 @@
 auto/**
 *.o
 build/**
+compile_commands.json
+.clangd/**
