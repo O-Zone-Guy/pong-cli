@@ -21,11 +21,11 @@ Vector2D::Vector2D(double rad, double mag) {
 }
 
 double Vector2D::getX() const {
-  return mag * cos(rad);
+  return round(mag * cos(rad));
 }
 
 double Vector2D::getY() const {
-  return mag * sin(rad);
+  return round(mag * sin(rad));
 }
 
 double Vector2D::getMag() const { return mag;}
@@ -68,9 +68,16 @@ Vector2D Vector2D::operator-() const {
 };
 
 double Vector2D::operator*(const Vector2D& v) const {
-  return this->getX() * v.getX() + this->getY() * v.getY();
+  return round(this->getX() * v.getX() + this->getY() * v.getY());
 }
 
 bool Vector2D::operator==(const Vector2D& other) const {
   return this->mag == other.mag && this->rad == other.rad;
+}
+
+double Vector2D::round(double x) const{
+  double val = x;
+  val *= 1E12;
+  val = val > 0 ? ceil(val - 0.5) : floor(val +  0.5);
+  return val / 1E12;
 }

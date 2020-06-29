@@ -3,6 +3,7 @@
 
 class Vector2D {
   double  rad, mag; // rad: radians degrees, mag: magnitude
+  double round(double) const;
 
 public:
   Vector2D(int, int);
