@@ -15,7 +15,8 @@ class Ball : Drawable {
   WINDOW win;
 
 public:
-  Ball(Point2D p, Vector2D v, int lB, int rB, WINDOW w): pos(p), vel(v), lBound(lB), rBound(rB), win(w) {};
+  Ball(Point2D p, Vector2D v, int lB, int rB, WINDOW w)
+    : pos(p), vel(v), lBound(lB), rBound(rB), win(w) {};
   void move(double);
   bool isAtGoal();
   void bounce(Vector2D);
