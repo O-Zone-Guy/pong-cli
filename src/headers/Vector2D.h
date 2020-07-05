@@ -8,8 +8,8 @@ class Vector2D {
 public:
   Vector2D(int, int);
   Vector2D(double, double);
-  double getX() const;
-  double getY() const;
+  int getX() const;
+  int getY() const;
   double getMag() const;
   void mulMag(double);
   void setMag(double);

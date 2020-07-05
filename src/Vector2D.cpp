@@ -20,12 +20,12 @@ Vector2D::Vector2D(double rad, double mag) {
   this->mag = mag;
 }
 
-double Vector2D::getX() const {
-  return round(mag * cos(rad));
+int Vector2D::getX() const {
+  return (int) std::round(mag * cos(rad));
 }
 
-double Vector2D::getY() const {
-  return round(mag * sin(rad));
+int Vector2D::getY() const {
+  return (int) std::round(mag * sin(rad));
 }
 
 double Vector2D::getMag() const { return mag;}

@@ -43,8 +43,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     |--------------+----------+----------+--------------------|
     | Vector2D     | ℕ, ℕ     | Vector2D |                    |
     | Vector2D     | ℝ, ℝ     | Vector2D |                    |
-    | getX         |          | ℝ        |                    |
-    | getY         |          | ℝ        |                    |
+    | getX         |          | ℕ       |                    |
+    | getY         |          | ℕ       |                    |
     | getMag       |          | ℝ        |                    |
     | mulMag       | ℝ        |          |                    |
     | setMag       | ℝ        |          | =invalid_argument= |
@@ -74,7 +74,10 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Assumptions
 
      Vector2D is called before any other function is called.
-**** Access Routine Semantics
+**** TODO Access Routine Semantics
+     #+BEGIN_COMMENT
+     Need to fix spec to use mag and rad instead of x and y.
+     #+END_COMMENT
 
      ~new~ Vector2D(𝑥: ℕ, 𝑦: ℕ):
      - transition: $self.mag, self.rad := \sqrt{x^2 + y^2}, atan2(x, y)$
