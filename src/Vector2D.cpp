@@ -9,15 +9,18 @@ Vector2D::Vector2D(int x, int y) {
 }
 
 Vector2D::Vector2D(double rad, double mag) {
-  rad = std::fmod(rad, 2*M_PI);
-  this->rad = rad > M_PI ? - (rad - M_PI) : rad;
-
   if (mag < 0){
     mag = - mag;
-    this->rad = - this->rad;
+    rad += M_PI;
   }
-
   this->mag = mag;
+
+  if (rad > M_PI)
+    this->rad = std::fmod(rad, 2*M_PI) - 2*M_PI;
+  else if (rad <= -M_PI)
+    this->rad = std::fmod(rad, 2 * M_PI) + 2 * M_PI;
+  else
+    this->rad = rad;
 }
 
 int Vector2D::getX() const {
@@ -52,7 +55,15 @@ void Vector2D::addY(double dy) {
   this->rad = atan2(y, x);
 }
 
-void Vector2D::rotate(double rad) { this->rad += rad; };
+void Vector2D::rotate(double rad) {
+  double newRad = this->rad + rad;
+  if (newRad > M_PI)
+    this->rad = std::fmod(newRad, 2*M_PI) - 2*M_PI;
+   else if (newRad <= -M_PI)
+    this->rad = std::fmod(newRad, 2 * M_PI) + 2 * M_PI;
+   else
+    this->rad = newRad;
+};
 
 double Vector2D::angleBetween(const Vector2D& v) const {
   return v.rad - this->rad;
@@ -64,7 +75,7 @@ Vector2D Vector2D::operator+(const Vector2D& v) const {
 }
 
 Vector2D Vector2D::operator-() const {
-  return Vector2D{this->mag, -this->rad};
+  return Vector2D{-this->mag, this->rad};
 };
 
 double Vector2D::operator*(const Vector2D& v) const {
