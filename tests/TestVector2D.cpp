@@ -33,3 +33,20 @@ TEST_F(TestVector2D, getter_X_Y){
   EXPECT_EQ(cR4.getX(), 10);
   EXPECT_EQ(cR4.getY(), -10);
 }
+
+TEST_F(TestVector2D, getter_mag_rad) {
+  // get mag
+  EXPECT_DOUBLE_EQ(pR0.getMag(), 0.0);
+  EXPECT_DOUBLE_EQ(pR1.getMag(), 5.0);
+  EXPECT_DOUBLE_EQ(pR2.getMag(), 3.5);
+  EXPECT_DOUBLE_EQ(pR3.getMag(), 10.0);
+  EXPECT_DOUBLE_EQ(pR4.getMag(), 3.4);
+
+  // get rad
+  EXPECT_DOUBLE_EQ(pR0.getAngle(), 0.0);
+  EXPECT_DOUBLE_EQ(pR1.getAngle(), 1.0);
+  EXPECT_DOUBLE_EQ(pR2.getAngle(), -M_PI/2);
+  EXPECT_DOUBLE_EQ(pR3.getAngle(), M_PI);
+  EXPECT_DOUBLE_EQ(pR4.getAngle(), M_PI/2);
+}
+
