@@ -74,10 +74,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Assumptions
 
      Vector2D is called before any other function is called.
-**** TODO Access Routine Semantics
-     #+BEGIN_COMMENT
-     Need to fix spec to use mag and rad instead of x and y.
-     #+END_COMMENT
+**** Access Routine Semantics
 
      ~new~ Vector2D(𝑥: ℕ, 𝑦: ℕ):
      - transition: $self.mag, self.rad := \sqrt{x^2 + y^2}, atan2(x, y)$
@@ -92,28 +89,27 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 
      getX():
-     - out: $out := self.x$
+     - out: $out := \|self.mag * cos(self.rad)\|$
 
 
      getY():
-     - out: $out := self.y$
+     - out: $out := \|self.mag * sin(self.rad)\|$
 
      getMag():
-     - out: $out := \sqrt{x^2 + x^2}$
-     - exception: none
+     - out: $out := self.mag$
 
     mulMag(𝑚):
-    - transition: $x, y := x\cdot m, y\cdot m$
+    - transition: $mag := mag \cdot m$
     - exception: None
 
 
     setMag(𝑚):
-    - transition: $𝑥, 𝑦 := x\cdot \frac{m}{getMag()}$, $y\cdot \frac{m}{getMag()}$
+    - transition: $mag := m$
     - exception: $exc := 𝑚 < 0 ⇒$ =invalid_argument=
 
 
     addMag(𝑚):
-    - transition: $self.mag := mag$
+    - transition: $self.mag := mag + m$
     - exception: None
 
 
@@ -127,12 +123,19 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     - exception: None
 
     rotate(𝑟):
-    - transition: $𝑥, 𝑦 := 𝑥·cos(𝑟) - 𝑦·sin(𝑟), 𝑥·sin(𝑟) + 𝑦·cos(𝑟)$
+    - transition: $rad :=$
+      #+begin_export latex
+      \begin{align*}
+        -π < rad + r ≤ π &⇒ rad + r &|\\
+        rad + r > π &⇒ (rad + r) mod 2π - 2π &|\\
+        rad + r ≤ -π &⇒ (rad + r) mod 2π + 2π 
+      \end{align*}
+      #+end_export
     - exception: None
 
 
     angleBetween(𝑣):
-    - out: $out := cos^{-1}(self.prod(v))$
+    - out: $out := v.rad - rad$
     - exception: $exc := v.getMag() ≤ 0 ⇒$ =invalid_argument=
 
 
