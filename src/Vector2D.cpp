@@ -8,17 +8,18 @@ Vector2D::Vector2D(int x, int y) {
   rad = atan2(y, x);
 }
 
-Vector2D::Vector2D(double rad, double mag) {
+Vector2D::Vector2D(double mag, double rad) {
   if (mag < 0){
     mag = - mag;
     rad += M_PI;
   }
   this->mag = mag;
 
-  if (rad > M_PI)
-    this->rad = std::fmod(rad, 2*M_PI) - 2*M_PI;
-  else if (rad <= -M_PI)
-    this->rad = std::fmod(rad, 2 * M_PI) + 2 * M_PI;
+  rad = std::fmod(rad, 2*M_PI);
+  if (( rad - M_PI ) > DBL_EPSILON)
+    this->rad = rad - 2*M_PI;
+  else if ((-M_PI - rad) >= DBL_EPSILON)
+    this->rad = rad + 2*M_PI;
   else
     this->rad = rad;
 }
@@ -32,6 +33,8 @@ int Vector2D::getY() const {
 }
 
 double Vector2D::getMag() const { return mag;}
+
+double Vector2D::getAngle() const {return rad;}
 
 void Vector2D::mulMag(double mag) { this->mag*= mag; };
 

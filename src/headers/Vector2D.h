@@ -11,6 +11,7 @@ public:
   int getX() const;
   int getY() const;
   double getMag() const;
+  double getAngle() const;
   void mulMag(double);
   void setMag(double);
   void addMag(double);

@@ -82,7 +82,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      - exception: None
 
 
-     ~new~ Vector2D(rad: ℝ, mag: ℝ):
+     ~new~ Vector2D(mag: ℝ, rad: ℝ):
      - transition: $self.mag, self.rad := mag, rad$
      - out: $out := self$
      - exception: None
