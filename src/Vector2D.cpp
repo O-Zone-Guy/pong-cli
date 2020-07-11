@@ -1,4 +1,5 @@
 #include "headers/Vector2D.h"
+#include <cfloat>
 #include <math.h>
 #include <stdexcept>
 #include <cmath>
@@ -42,17 +43,17 @@ void Vector2D::setMag(double mag) { this->mag = mag; };
 
 void Vector2D::addMag(double dMag) { this->mag += dMag;};
 
-void Vector2D::addX(double dx) {
-  double x = this->getX() + dx;
-  double y = this->getY();
+void Vector2D::addX(int dx) {
+  int x = this->getX() + dx;
+  int y = this->getY();
 
   this->mag = sqrt(x*x + y*y);
   this->rad = atan2(y, x);
 }
 
-void Vector2D::addY(double dy) {
-  double x = this->getX();
-  double y = this->getY() + dy;
+void Vector2D::addY(int dy) {
+  int x = this->getX();
+  int y = this->getY() + dy;
 
   this->mag = sqrt(x*x + y*y);
   this->rad = atan2(y, x);

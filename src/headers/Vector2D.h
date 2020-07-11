@@ -15,8 +15,8 @@ public:
   void mulMag(double);
   void setMag(double);
   void addMag(double);
-  void addX(double);
-  void addY(double);
+  void addX(int);
+  void addY(int);
   void rotate(double);
   double angleBetween(const Vector2D&) const;
 
