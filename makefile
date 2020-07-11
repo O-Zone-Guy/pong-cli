@@ -14,4 +14,4 @@ Test%: cmake
 # Generate required file for clangd lsp
 clangd:
 	cd build; cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
-	ln -s build/compile_commands.json .
+	ln -sf build/compile_commands.json .
