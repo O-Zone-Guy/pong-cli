@@ -4,3 +4,4 @@ auto/**
 build/**
 compile_commands.json
 .clangd/**
+ltximg/**
