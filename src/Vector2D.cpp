@@ -4,11 +4,6 @@
 #include <stdexcept>
 #include <cmath>
 
-Vector2D::Vector2D(int x, int y) {
-  mag = sqrt(x*x + y*y);
-  rad = atan2(y, x);
-}
-
 Vector2D::Vector2D(double mag, double rad) {
   if (mag < 0){
     mag = - mag;

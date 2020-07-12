@@ -6,7 +6,6 @@ class Vector2D {
   double round(double) const;
 
 public:
-  Vector2D(int, int);
   Vector2D(double, double);
   int getX() const;
   int getY() const;
