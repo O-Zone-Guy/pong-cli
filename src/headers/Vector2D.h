@@ -7,15 +7,15 @@ class Vector2D {
 
 public:
   Vector2D(double, double);
-  int getX() const;
-  int getY() const;
+  double getX() const;
+  double getY() const;
   double getMag() const;
   double getAngle() const;
   void mulMag(double);
   void setMag(double);
   void addMag(double);
-  void addX(int);
-  void addY(int);
+  void addX(double);
+  void addY(double);
   void rotate(double);
   double angleBetween(const Vector2D&) const;
 

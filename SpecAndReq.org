@@ -42,8 +42,8 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
     | Routine name | Input    | Out      | Exceptions         |
     |--------------+----------+----------+--------------------|
     | Vector2D     | ℝ, ℝ     | Vector2D |                    |
-    | getX         |          | ℕ       |                    |
-    | getY         |          | ℕ       |                    |
+    | getX         |          | ℝ        |                    |
+    | getY         |          | ℝ        |                    |
     | getMag       |          | ℝ        |                    |
     | mulMag       | ℝ        |          |                    |
     | setMag       | ℝ        |          | =invalid_argument= |
@@ -82,11 +82,11 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 
 
      getX():
-     - out: $out := \|self.mag * cos(self.rad)\|$
+     - out: $out := self.mag * cos(self.rad)$
 
 
      getY():
-     - out: $out := \|self.mag * sin(self.rad)\|$
+     - out: $out := self.mag * sin(self.rad)$
 
      getMag():
      - out: $out := self.mag$
