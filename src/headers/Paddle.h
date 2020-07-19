@@ -9,7 +9,7 @@ const double SPEED = 10;
 
 enum Direction { Up, Down, None};
 
-class Paddle : Drawable {
+class Paddle : public Drawable {
   int len;
   Point2D pos;
   WINDOW win;
@@ -23,6 +23,7 @@ public:
   Point2D getPos(){ return pos;}
   Point2D getTop();
   Point2D getBot();
+  void draw(WINDOW) override;
 };
 
 
