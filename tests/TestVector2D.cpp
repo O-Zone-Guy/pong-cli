@@ -4,12 +4,6 @@
 
 class TestVector2D : public ::testing::Test {
 protected:
-  Vector2D cR0 {0, 0};
-  Vector2D cR1 {10, 10};
-  Vector2D cR2 {10, 0};
-  Vector2D cR3 {0, 10};
-  Vector2D cR4 {10, -10};
-
   Vector2D pR0 {0.0, 0.0};
   Vector2D pR1 {5.0, 1.0};
   Vector2D pR2 {-3.5, M_PI/2};
