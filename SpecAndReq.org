@@ -317,12 +317,12 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
      
        
      getTop():
-     - Out: $out := new Point2D(getPos().getX(), getPos().getY()) + ⌈len/2⌉$
+     - Out: $out := Point2D(getPos().getX(), getPos().getY()) - ⌈len/2⌉$
      - Exception: None
      
 
      getBot():
-     - Out: $out := new Point2D(getPos().getX(), getPos().getY()) - ⌈len/2⌉$
+     - Out: $out := Point2D(getPos().getX(), getPos().getY()) + ⌈len/2⌉$
      - Exception: None
        
 
