@@ -17,9 +17,9 @@ class Paddle : Drawable {
 
 public:
   Paddle(Point2D p, WINDOW w, int l): pos(p), win(w), len(l){};
-  void move(Direction dir);
-  void move(float time);
-  void moveTo(Point2D newPos);
+  void move(Direction);
+  void move(float);
+  void moveTo(Point2D);
   Point2D getPos(){ return pos;}
   Point2D getTop();
   Point2D getBot();
