@@ -7,12 +7,13 @@
 
 const double SPEED = 10;
 
-enum Direction { Up, Down };
+enum Direction { Up, Down, None};
 
 class Paddle : Drawable {
   int len;
   Point2D pos;
   WINDOW win;
+  Direction dir;
 
 public:
   Paddle(Point2D p, WINDOW w, int l): pos(p), win(w), len(l){};
