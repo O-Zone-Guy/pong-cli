@@ -283,7 +283,7 @@ This project is an implementation of the [[https://en.wikipedia.org/wiki/Pong][P
 **** Access Routine Semantics
      
      ~new~ Paddle(p, w, l):
-     - transition: $pos, window, length := p, w, l$
+     - transition: $pos, window, length, dir := p, w, l, None$
      - Out: $out := self$
      - Exception: $exc := $ =out_of_range=
        
