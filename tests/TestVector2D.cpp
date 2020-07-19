@@ -12,35 +12,32 @@ protected:
 };
 
 TEST_F(TestVector2D, getter_X_Y){
-  EXPECT_EQ(cR0.getX(), 0);
-  EXPECT_EQ(cR0.getY(), 0);
+  EXPECT_NEAR(pR0.getX(), 0.0, 1E-12);
+  EXPECT_NEAR(pR0.getY(), 0.0, 1E-12);
 
-  EXPECT_EQ(cR1.getX(), 10);
-  EXPECT_EQ(cR1.getY(), 10);
+  EXPECT_NEAR(pR2.getX(), 0.0, 1E-12);
+  EXPECT_NEAR(pR2.getY(), -3.5, 1E-12);
 
-  EXPECT_EQ(cR2.getX(), 10);
-  EXPECT_EQ(cR2.getY(), 0);
+  EXPECT_NEAR(pR3.getX(), -10.0, 1E-12);
+  EXPECT_NEAR(pR3.getY(), 0.0, 1E-12);
 
-  EXPECT_EQ(cR3.getX(), 0);
-  EXPECT_EQ(cR3.getY(), 10);
-
-  EXPECT_EQ(cR4.getX(), 10);
-  EXPECT_EQ(cR4.getY(), -10);
+  EXPECT_NEAR(pR4.getX(), 0.0, 1E-12);
+  EXPECT_NEAR(pR4.getY(), 3.4, 1E-12);
 }
 
 TEST_F(TestVector2D, getter_mag_rad) {
   // get mag
-  EXPECT_DOUBLE_EQ(pR0.getMag(), 0.0);
-  EXPECT_DOUBLE_EQ(pR1.getMag(), 5.0);
-  EXPECT_DOUBLE_EQ(pR2.getMag(), 3.5);
-  EXPECT_DOUBLE_EQ(pR3.getMag(), 10.0);
-  EXPECT_DOUBLE_EQ(pR4.getMag(), 3.4);
+  ASSERT_NEAR(pR0.getMag(), 0.0, 1E-12);
+  ASSERT_NEAR(pR1.getMag(), 5.0, 1E-12);
+  ASSERT_NEAR(pR2.getMag(), 3.5, 1E-12);
+  ASSERT_NEAR(pR3.getMag(), 10.0, 1E-12);
+  ASSERT_NEAR(pR4.getMag(), 3.4, 1E-12);
 
   // get rad
-  EXPECT_DOUBLE_EQ(pR0.getAngle(), 0.0);
-  EXPECT_DOUBLE_EQ(pR1.getAngle(), 1.0);
-  EXPECT_DOUBLE_EQ(pR2.getAngle(), -M_PI/2);
-  EXPECT_DOUBLE_EQ(pR3.getAngle(), M_PI);
-  EXPECT_DOUBLE_EQ(pR4.getAngle(), M_PI/2);
+  ASSERT_NEAR(pR0.getAngle(), 0.0, 1E-12);
+  ASSERT_NEAR(pR1.getAngle(), 1.0, 1E-12);
+  ASSERT_NEAR(pR2.getAngle(), -M_PI/2, 1E-12);
+  ASSERT_NEAR(pR3.getAngle(), M_PI, 1E-12);
+  ASSERT_NEAR(pR4.getAngle(), M_PI/2, 1E-12);
 }
 
